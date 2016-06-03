@@ -29,6 +29,7 @@ object Client  extends  App{
 
   }
 
+
   def send(ip: String, file: File, top: String): Unit = {
     if(file.isDirectory) file.listFiles().foreach(send(ip, _, "" + File.separator + file.getName))
     else send_file(ip, file, top)
