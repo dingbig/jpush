@@ -40,7 +40,6 @@ object Client  extends  App{
     else args.drop(1).map(new File(_)).foreach(send(args(0), _, ""))
 
   }
-
   def usage(): Unit = {
     println("usage: jpsh.Client <ip> [file]...")
     System.exit(-1)
