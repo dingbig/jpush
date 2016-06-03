@@ -10,4 +10,3 @@ where dir is the root dir when files will saved to
 jpush -cp jpush.jar jpush.Client <serverip> [dir or file].....
 
 
-
