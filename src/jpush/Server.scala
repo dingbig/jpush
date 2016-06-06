@@ -3,20 +3,30 @@ package jpush
 import java.io.{DataInputStream, File, FileOutputStream}
 import java.net.ServerSocket
 
-import scala.collection.JavaConversions._
+import jpush.utils.Helper
+import Helper._
+import jpush.portal.PortalServer
 
 /**
   * Created by dingb on 2016/6/3.
   */
 object Server extends  App {
   def port = 8899
+  var ftproots: List[File] = null;
   override def main(args: Array[String]) {
     val roots = args.toList match {
       case Nil => List(new File(System.getProperty("user.dir")))
       case _ =>  args.map(new File(_)).toList
     }
+    ftproots = roots
+
 
     printf("dst root is %s\n", roots.mkString(","))
+
+    val ps = new PortalServer(8898)
+    ps.start
+
+
     val ss = new ServerSocket(port)
     def accept: Unit = {
       val s = ss.accept()
@@ -44,14 +54,6 @@ object Server extends  App {
     accept
   }
 
-  def async(body : => Unit) = {
-    val t = new Thread(new Runnable {
-      override def run(): Unit = {
-        body
-      }
-    })
-    t.start()
-  }
 }
 
 
