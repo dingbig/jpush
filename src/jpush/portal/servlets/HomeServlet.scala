@@ -18,12 +18,17 @@ class HomeServlet extends HttpServlet{
     <html>
       <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+          <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+          <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
         <title></title></head>
       <body>
         <div><a href={"/FileExplorer?goto=" + mePath}>Download Me!</a></div>
         <div><span>FTP Roots</span>
         {Server.ftproots.map(_.toHtmlElement)}
         </div>
+        <button type="button" class="btn btn-default">默认按钮</button>
 
 
         <div><span>java -cp jpush.jar jpush.Server</span></div>

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="jpush:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/jpush_jar</output-path>
+    <output-path>$PROJECT_DIR$/../../..</output-path>
     <root id="archive" name="jpush.jar">
       <element id="module-output" name="jpush" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../scala/lib/scala-actors-2.11.0.jar" path-in-jar="/" />
@@ -10,6 +10,14 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../scala/lib/scala-reflect.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../scala/lib/scala-swing_2.11-1.0.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../scala/lib/scala-xml_2.11-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/servlet-api-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-io-9.3.9.v20160517.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-http-9.3.9.v20160517.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-util-9.3.9.v20160517.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-server-9.3.9.v20160517.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-webapp-9.3.9.v20160517.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-servlet-9.3.9.v20160517.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jetty-servlets-9.3.9.v20160517.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
