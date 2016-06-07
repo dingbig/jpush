@@ -1,11 +1,12 @@
 package jpush
 
 import java.io.{DataInputStream, File, FileOutputStream}
-import java.net.ServerSocket
+import java.net.{Inet6Address, NetworkInterface, ServerSocket}
 
 import jpush.utils.Helper
 import Helper._
 import jpush.portal.PortalServer
+import  scala.collection.JavaConversions._
 
 /**
   * Created by dingb on 2016/6/3.
@@ -22,6 +23,11 @@ object Server extends  App {
 
 
     printf("dst root is %s\n", roots.mkString(","))
+    printf("visit method in other hosts:\n")
+
+    NetworkInterface.getNetworkInterfaces.toList.filterNot(_.isLoopback).flatMap(_.getInetAddresses.toList.filterNot(_.isInstanceOf[Inet6Address]).map(_.getHostAddress)).foreach {
+      addr => println("java -cp jpush.jar Client %s [files or dirs]".format(addr))
+    }
 
     val ps = new PortalServer(8898)
     ps.start

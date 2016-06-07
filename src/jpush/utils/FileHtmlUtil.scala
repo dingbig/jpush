@@ -12,8 +12,15 @@ object FileHtmlUtil {
   class FileToHtmlElementConvertor(f: File) {
     def toHtmlElement() = {
 
-      if(f.isDirectory)  <div><a href={"/FileExplorer?goto=" + f.getAbsolutePath}><b>{f.getAbsolutePath}</b></a></div>
-      else <div><a href={"/FileExplorer?goto=" + f.getAbsolutePath}>{f.getAbsolutePath + " " + f.length()}</a></div>
+      if(f.isDirectory) {
+        val canEnter = (try {f.listFiles(); true} catch {case _ => false}) && (f.list()!=null)
+        if(canEnter)       <div><a href={"/FileExplorer?goto=" + f.getAbsolutePath}><b><span style="color: blue;">{f.getAbsolutePath}</span></b></a></div>
+        else     <div><a href={"/FileExplorer?goto=" + f.getAbsolutePath}><b><span style="color: red;">{f.getAbsolutePath}</span></b></a></div>
+      }
+      else {
+        if(f.canExecute) <div><a href={"/FileExplorer?goto=" + f.getAbsolutePath}><span style="color: green;">{f.getAbsolutePath + " " + f.length()}</span></a></div>
+        else <div><a href={"/FileExplorer?goto=" + f.getAbsolutePath}>{f.getAbsolutePath + " " + f.length()}</a></div>
+      }
     }
   }
 }

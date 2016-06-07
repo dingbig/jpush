@@ -17,16 +17,20 @@ class FileExplorerServlet extends HttpServlet {
     <html>
       <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <title></title></head>
       <body>
         {
         val subs = dir.listFiles()
-
         val list = subs.filter(_.isDirectory).map(_.toHtmlElement) ++  subs.filter(_.isFile).map(_.toHtmlElement)
 
         list
         }
+        <script>
+        </script>
       </body>
     </html>
 
