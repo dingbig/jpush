@@ -4,8 +4,8 @@ import java.io.{File, FileInputStream}
 import javax.print.DocFlavor.URL
 import javax.servlet.http.{HttpServlet, HttpServletRequest, HttpServletResponse}
 
+import jpush.Server
 import org.eclipse.jetty.util.StringUtil
-
 import jpush.utils.FileHtmlUtil._
 
 /**
@@ -23,6 +23,10 @@ class FileExplorerServlet extends HttpServlet {
         <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <title></title></head>
       <body>
+        <h1>{
+        dir.toHtmlElement()
+        }
+          </h1>
         {
         val subs = dir.listFiles()
         val list = subs.filter(_.isDirectory).map(_.toHtmlElement) ++  subs.filter(_.isFile).map(_.toHtmlElement)
@@ -36,11 +40,20 @@ class FileExplorerServlet extends HttpServlet {
 
   }
 
+  def isSonOf(goto: String, ftproots: List[File]) = ftproots.exists(p => goto.toLowerCase().startsWith(p.getAbsolutePath.toLowerCase))
+
+
+
+
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
     val goto = req.getParameter("goto")
 
     if(StringUtil.isBlank(goto)) {
       resp.getWriter.println("goto missing")
+    } else if(goto.contains("..")) {
+      resp.getWriter.println("you bad bad")
+    } else if(!isSonOf(goto, Server.ftproots) ) {
+      resp.getWriter.println("forbidden")
     } else {
       val file = new File(goto)
       if(file.isDirectory) {

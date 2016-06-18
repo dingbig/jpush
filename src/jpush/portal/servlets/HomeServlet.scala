@@ -14,7 +14,7 @@ import scala.collection.JavaConversions._
   */
 class HomeServlet extends HttpServlet{
   def loadPage = {
-    val mePath = getClass.getProtectionDomain.getCodeSource.getLocation.getFile
+
     <html>
       <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -24,7 +24,6 @@ class HomeServlet extends HttpServlet{
 
         <title></title></head>
       <body>
-        <div><a href={"/FileExplorer?goto=" + mePath}>Download Me!</a></div>
         <div><span>FTP Roots</span>
         {Server.ftproots.map(_.toHtmlElement)}
         </div>
@@ -35,14 +34,10 @@ class HomeServlet extends HttpServlet{
         {ips}
 
         {
-        File.listRoots().map(_.toHtmlElement)
+        //File.listRoots().map(_.toHtmlElement)
         }
-        <div><span>Global text</span></div>
-        {
-        <form>
-        <textarea  style="margin: 0px; height: 255px; width: 717px;"></textarea>
-        </form>
-        }
+
+
         <script>
 
         </script>
